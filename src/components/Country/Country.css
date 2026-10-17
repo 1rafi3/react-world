@@ -1,0 +1,26 @@
+.image-container {
+  /* 1. Define the exact frame size you want for your image */
+  width: 100%;       /* Can be 300px, 100%, etc. */
+  height: 100px;     /* Sets a rigid height boundary */
+  border-radius: 12px;
+  overflow: hidden;  /* Ensures corners stay rounded */
+}
+
+.perfect-img {
+  /* 2. Tell the image to occupy the full width and height of its parent */
+  width: 100%;
+  height: 100%;
+  
+  /* 3. THE MAGIC PROPERTY: Prevents stretching or squishing */
+  object-fit: cover; 
+  
+  /* 4. OPTIONAL: Dictates which part of the image stays centered */
+  object-position: center; /* Options: top, bottom, left, right */
+}
+
+.visited{
+  background: #09e3e3;
+}
+.notVisited{
+  background: rgba(10, 123, 235, 0.133);
+}
