@@ -5,10 +5,20 @@ const County = ({country, handleVisitedCountries, handleVisitedFlags}) => {
 
     const [visited, setVisited] = useState(false);
 
+    const [flagAdded, setFlagAdded] = useState(false);
+
+    const handlFlag = () => {
+        const newFlagStatus = !flagAdded;
+
+        setFlagAdded(newFlagStatus);
+        handleVisitedFlags(country, newFlagStatus);
+    }
+
     const handleVisited = () => {
-        setVisited(!visited);
+        const newVisitedStatus = !visited;
+        setVisited(newVisitedStatus);
         console.log(visited)
-        handleVisitedCountries(country);
+        handleVisitedCountries(country, newVisitedStatus);
     }
 
     // console.log(country);
@@ -22,7 +32,7 @@ const County = ({country, handleVisitedCountries, handleVisitedFlags}) => {
                 <button className='button'>{country.ccn3?.ccn3}</button>
             </div>
             <div style={{background : '#020613', margin:'5px', display: 'flex', flexDirection : 'column', gap : '5px'}}>
-                <p>Currencies : BDT symbol</p>
+                <p>Currencies : BDT</p>
                 <p>Capital : Dhaka</p>
                 <p>Region : Asia</p>
                 <p>Language: Bangali</p>
@@ -32,7 +42,7 @@ const County = ({country, handleVisitedCountries, handleVisitedFlags}) => {
                 onClick={handleVisited}>
                     {visited? 'Visited' : 'Not Visited'}
                 </button>
-                <button onClick={() => {handleVisitedFlags(country)}}>
+                <button className={flagAdded? 'visited' : 'notVisited'}  onClick={handlFlag}>
                     Add Visited Flag
                 </button>
             </div>
